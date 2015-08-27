@@ -3,5 +3,7 @@ This Microsoft Excel 2013 Spreadsheet for LLSIF (Love Live! school idol festival
 
 Please feel free to modify the embedded VBA code.
 
+If you would like to make a pull request, please make sure to modify the VBA-Module files. Thanks in advance!
+
 ### For Excel 2010/2007
 This spreadsheet works on Excel 2010/2007, but you will notice #VALUE errors in a few cells. This can be easily fixed by changing the formula in those cells to reflect the correct "rounding" function on these versions
