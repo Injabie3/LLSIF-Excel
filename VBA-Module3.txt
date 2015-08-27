@@ -1,0 +1,232 @@
+Sub SM_EN_Step1_Expert()
+'
+' Set Expert in Step 1 for EN Score Match Macro
+'
+
+'
+    Dim EXPGain As Integer
+    Dim BaseScore As Integer
+    Dim LP As Integer
+    
+    EXPGain = Range("B10").Value
+    LP = Range("B11").Value
+    BaseScore = Range("B12").Value
+        
+    Range("B21").Value = "Expert"
+    Range("C21").Value = EXPGain
+    Range("B22").Value = "Expert"
+    Range("C22").Value = BaseScore
+    Range("E21").Value = LP
+    
+End Sub
+Sub SM_EN_Step1_Hard()
+'
+' Set Hard in Step 1 for EN Score Match Macro
+'
+
+'
+    Dim EXPGain As Integer
+    Dim BaseScore As Integer
+    Dim LP As Integer
+    
+    EXPGain = Range("C10").Value
+    LP = Range("C11").Value
+    BaseScore = Range("C12").Value
+    
+    Range("B21").Value = "Hard"
+    Range("C21").Value = EXPGain
+    Range("B22").Value = "Hard"
+    Range("C22").Value = BaseScore
+    Range("E21").Value = LP
+    
+End Sub
+Sub SM_EN_Step1_Normal()
+'
+' Set Normal in Step 1 for EN Score Match Macro
+'
+
+'
+    Dim EXPGain As Integer
+    Dim BaseScore As Integer
+    Dim LP As Integer
+    
+    EXPGain = Range("D10").Value
+    LP = Range("D11").Value
+    BaseScore = Range("D12").Value
+    
+    Range("B21").Value = "Normal"
+    Range("C21").Value = EXPGain
+    Range("B22").Value = "Normal"
+    Range("C22").Value = BaseScore
+    Range("E21").Value = LP
+    
+End Sub
+Sub SM_EN_Step1_Easy()
+'
+' Set Easy in Step 1 for EN Score MatchMacro
+'
+
+'
+    Dim EXPGain As Integer
+    Dim BaseScore As Integer
+    Dim LP As Integer
+    
+    EXPGain = Range("D10").Value
+    LP = Range("E11").Value
+    BaseScore = Range("E12").Value
+    
+    Range("B21").Value = "Easy"
+    Range("C21").Value = EXPGain
+    Range("B22").Value = "Easy"
+    Range("C22").Value = BaseScore
+    Range("E21").Value = LP
+    
+End Sub
+Sub SM_EN_Step2_S()
+'
+' Set S score in Step 2 for EN Score Match Macro
+'
+
+    Dim ScoreRank As Double
+    ScoreRank = Range("B16").Value
+    
+    Range("B23").Value = "S Rank"
+    Range("C23").Value = ScoreRank
+
+End Sub
+Sub SM_EN_Step2_A()
+'
+' Set A score in Step 2 for EN Score Match Macro
+'
+
+    Dim ScoreRank As Double
+    ScoreRank = Range("C16").Value
+    
+    Range("B23").Value = "A Rank"
+    Range("C23").Value = ScoreRank
+
+End Sub
+Sub SM_EN_Step2_B()
+'
+' Set B score in Step 2 for EN Score Match Macro
+'
+
+    Dim ScoreRank As Double
+    ScoreRank = Range("D16").Value
+    
+    Range("B23").Value = "B Rank"
+    Range("C23").Value = ScoreRank
+
+End Sub
+Sub SM_EN_Step2_C()
+'
+' Add EXP to EN Macro
+'
+
+    Dim ScoreRank As Double
+    ScoreRank = Range("E16").Value
+    
+    Range("B23").Value = "C Rank"
+    Range("C23").Value = ScoreRank
+
+End Sub
+Sub SM_EN_Step3_1st()
+'
+' Set 1st place in Step 3 for EN Score Match Macro
+'
+
+    Dim PlaceRank As Double
+    PlaceRank = Range("B19").Value
+    
+    Range("B24").Value = "1st"
+    Range("C24").Value = PlaceRank
+
+End Sub
+Sub SM_EN_Step3_2nd()
+'
+' Set 2nd place in Step 3 for EN Score Match Macro
+'
+
+    Dim PlaceRank As Double
+    PlaceRank = Range("C19").Value
+    
+    Range("B24").Value = "2nd"
+    Range("C24").Value = PlaceRank
+
+End Sub
+Sub SM_EN_Step3_3rd()
+'
+' Set 3rd place in Step 3 for EN Score Match Macro
+'
+
+    Dim PlaceRank As Double
+    PlaceRank = Range("D19").Value
+    
+    Range("B24").Value = "3rd"
+    Range("C24").Value = PlaceRank
+
+End Sub
+Sub SM_EN_Step3_4th()
+'
+' Set 4th place in Step 3 for EN Score Match Macro
+'
+
+    Dim PlaceRank As Double
+    PlaceRank = Range("E19").Value
+    
+    Range("B24").Value = "4th"
+    Range("C24").Value = PlaceRank
+
+End Sub
+Sub SM_EN_Add()
+'
+' Add EXP to EN Macro
+'
+
+    Dim BasePoints As Integer
+    Dim ScoreRank As Double
+    Dim PlaceRank As Double
+    Dim RoundPoints As Integer
+    Dim EXPGain As Integer
+    
+    BasePoints = Range("C22").Value
+    ScoreRank = Range("C23").Value
+    PlaceRank = Range("C24").Value
+    'the 0.00001 is to force VB to round up at .5
+    RoundPoints = Round(BasePoints * ScoreRank * PlaceRank + 0.000001, 0)
+    
+    EXPGain = Range("C21").Value
+    
+    Range("B28").Value = Range("B28").Value + RoundPoints
+    Range("B5").Value = Range("B5").Value + EXPGain
+
+End Sub
+Sub SM_EN_Remove()
+'
+' Add EXP to EN Macro
+'
+
+    Dim BasePoints As Integer
+    Dim ScoreRank As Double
+    Dim PlaceRank As Double
+    Dim RoundPoints As Integer
+    Dim EXPGain As Integer
+    
+    Range("C22").Select
+    BasePoints = ActiveCell.FormulaR1C1
+    Range("C23").Select
+    ScoreRank = ActiveCell.FormulaR1C1
+    Range("C24").Select
+    PlaceRank = ActiveCell.FormulaR1C1
+    'the 0.00001 is to force VB to round up at .5
+    RoundPoints = Round(BasePoints * ScoreRank * PlaceRank + 0.000001, 0)
+    
+    Range("C21").Select
+    EXPGain = ActiveCell.FormulaR1C1
+    
+    Range("B28").Select
+    ActiveCell.FormulaR1C1 = ActiveCell.FormulaR1C1 - RoundPoints
+    Range("B5").Select
+    ActiveCell.FormulaR1C1 = ActiveCell.FormulaR1C1 - EXPGain
+
+End Sub
