@@ -1,5 +1,3 @@
-' EN and JP Token Collection Macros
-' Includes universal LCS (lovecas) macros
 
 Sub AddLCS_EN()
 '

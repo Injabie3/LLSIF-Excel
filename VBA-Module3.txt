@@ -1,5 +1,3 @@
-' EN Server Score Match Macros
-
 Sub SM_EN_Step1_Expert()
 '
 ' Set Expert in Step 1 for EN Score Match Macro
@@ -214,15 +212,21 @@ Sub SM_EN_Remove()
     Dim RoundPoints As Integer
     Dim EXPGain As Integer
     
-    BasePoints = Range("C22").Value
-    ScoreRank = Range("C23").Value
-    PlaceRank = Range("C24").Value
+    Range("C22").Select
+    BasePoints = ActiveCell.FormulaR1C1
+    Range("C23").Select
+    ScoreRank = ActiveCell.FormulaR1C1
+    Range("C24").Select
+    PlaceRank = ActiveCell.FormulaR1C1
     'the 0.00001 is to force VB to round up at .5
     RoundPoints = Round(BasePoints * ScoreRank * PlaceRank + 0.000001, 0)
     
-    EXPGain = Range("C21").Value
+    Range("C21").Select
+    EXPGain = ActiveCell.FormulaR1C1
     
-    Range("B28").Value = Range("B28").Value - RoundPoints
-    Range("B5").Value = Range("B5").Value - EXPGain
+    Range("B28").Select
+    ActiveCell.FormulaR1C1 = ActiveCell.FormulaR1C1 - RoundPoints
+    Range("B5").Select
+    ActiveCell.FormulaR1C1 = ActiveCell.FormulaR1C1 - EXPGain
 
 End Sub
