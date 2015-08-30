@@ -177,7 +177,7 @@ Sub SM_JP_Step3_4th()
     Dim PlaceRank As Double
     PlaceRank = Range("K19").Value
     
-    Range("H24").Value = "4rd"
+    Range("H24").Value = "4th"
     Range("I24").Value = PlaceRank
 
 End Sub
