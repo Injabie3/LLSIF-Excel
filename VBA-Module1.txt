@@ -528,3 +528,4 @@ Sub TC_AddEXP_JP_Token_Easy_4x()
     Range("H17").Select
     ActiveCell.FormulaR1C1 = ActiveCell.FormulaR1C1 + (4 * PointsPerSong)
 End Sub
+

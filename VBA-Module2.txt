@@ -42,7 +42,7 @@ Sub SM_JP_Step1_Hard()
 End Sub
 Sub SM_JP_Step1_Normal()
 '
-' Add EXP to EN Macro
+' Set Normal in Step 1 for JP Score Match Macro
 '
 
 '
@@ -62,7 +62,7 @@ Sub SM_JP_Step1_Normal()
 End Sub
 Sub SM_JP_Step1_Easy()
 '
-' Add EXP to EN Macro
+' Set Easy in Step 1 for JP Score Match Macro
 '
 
 '
@@ -82,7 +82,7 @@ Sub SM_JP_Step1_Easy()
 End Sub
 Sub SM_JP_Step2_S()
 '
-' Add EXP to EN Macro
+' Set S score in Step 2 for JP Score Match Macro
 '
 
     Dim ScoreRank As Double
@@ -95,7 +95,7 @@ Sub SM_JP_Step2_S()
 End Sub
 Sub SM_JP_Step2_A()
 '
-' Add EXP to EN Macro
+' Set A score in Step 2 for JP Score Match Macro
 '
 
     Dim ScoreRank As Double
@@ -108,7 +108,7 @@ Sub SM_JP_Step2_A()
 End Sub
 Sub SM_JP_Step2_B()
 '
-' Add EXP to EN Macro
+' Set B score in Step 2 for JP Score Match Macro
 '
 
     Dim ScoreRank As Double
@@ -121,7 +121,7 @@ Sub SM_JP_Step2_B()
 End Sub
 Sub SM_JP_Step2_C()
 '
-' Add EXP to EN Macro
+' Set C score in Step 2 for JP Score Match Macro
 '
 
     Dim ScoreRank As Double
@@ -134,7 +134,7 @@ Sub SM_JP_Step2_C()
 End Sub
 Sub SM_JP_Step3_1st()
 '
-' Add EXP to EN Macro
+' Set 1st place in Step 3 for JP Score Match Macro
 '
 
     Dim PlaceRank As Double
@@ -147,7 +147,7 @@ Sub SM_JP_Step3_1st()
 End Sub
 Sub SM_JP_Step3_2nd()
 '
-' Add EXP to EN Macro
+' Set 2nd place in Step 3 for JP Score Match Macro
 '
 
     Dim PlaceRank As Double
@@ -160,7 +160,7 @@ Sub SM_JP_Step3_2nd()
 End Sub
 Sub SM_JP_Step3_3rd()
 '
-' Add EXP to EN Macro
+' Set 3rd place in Step 3 for JP Score Match Macro
 '
 
     Dim PlaceRank As Double
@@ -173,7 +173,7 @@ Sub SM_JP_Step3_3rd()
 End Sub
 Sub SM_JP_Step3_4th()
 '
-' Add EXP to EN Macro
+' Set 4th place in Step 3 for JP Score Match Macro
 '
 
     Dim PlaceRank As Double
@@ -185,7 +185,7 @@ Sub SM_JP_Step3_4th()
 End Sub
 Sub SM_JP_Add()
 '
-' Add EXP to JP Macro
+' Adds Score Match round points and EXP to JP Macro
 '
 
     Dim BasePoints As Integer
@@ -213,7 +213,7 @@ Sub SM_JP_Add()
 End Sub
 Sub SM_JP_Remove()
 '
-' Add EXP to EN Macro
+' Removes Score Match round points & EXP from JP Macro
 '
 
     Dim BasePoints As Integer
@@ -244,10 +244,8 @@ Sub SM_JP_HistoryAdd()
 ' Adds the current score match information to history.
 '
 
-'
     Dim RowNumber As Integer
-    Range("K28").Select
-    RowNumber = ActiveCell.FormulaR1C1
+    RowNumber = Range("K28").Value
     
     ' Current Date/Time
     Range("G" + CStr(RowNumber)).Value = Now()
@@ -265,8 +263,7 @@ Sub SM_JP_HistoryAdd()
     Range("K" + CStr(RowNumber)).Value = Range("I25").Value
     
     ' Add 1 to Rows
-    Range("K28").Select
-    ActiveCell.FormulaR1C1 = RowNumber + 1
+    Range("K28").Value = RowNumber + 1
     
 End Sub
 
@@ -276,10 +273,8 @@ Sub SM_JP_HistoryDel()
 ' Deletes the last added SM history on JP
 '
 
-'
     Dim RowNumber As Integer
-    Range("K28").Select
-    RowNumber = ActiveCell.FormulaR1C1 - 1
+    RowNumber = Range("K28").Value - 1
     
     ' Current Date/Time
     Range("G" + CStr(RowNumber)).Value = ""
@@ -296,10 +291,10 @@ Sub SM_JP_HistoryDel()
     ' Copy/Paste Round Points
     Range("K" + CStr(RowNumber)).Value = ""
     
-    ' Add 1 to Rows
-    Range("K28").Select
-    ActiveCell.FormulaR1C1 = RowNumber
+    ' Put the reduced row number back in the cell.
+    Range("K28").Value = RowNumber
     
 End Sub
+
 
 

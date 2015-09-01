@@ -122,7 +122,7 @@ Sub SM_EN_Step2_B()
 End Sub
 Sub SM_EN_Step2_C()
 '
-' Add EXP to EN Macro
+' Set C score in Step 2 for EN Score Match Macro
 '
 
     Dim ScoreRank As Double
@@ -182,7 +182,7 @@ Sub SM_EN_Step3_4th()
 End Sub
 Sub SM_EN_Add()
 '
-' Add EXP to EN Macro
+' Adds Score Match round points and EXP to EN Macro
 '
 
     Dim BasePoints As Integer
@@ -199,13 +199,17 @@ Sub SM_EN_Add()
     
     EXPGain = Range("C21").Value
     
+    ' Add Round Points to the running total.
     Range("B28").Value = Range("B28").Value + RoundPoints
     Range("B5").Value = Range("B5").Value + EXPGain
+    
+    ' Add results to history
+    SM_EN_HistoryAdd
 
 End Sub
 Sub SM_EN_Remove()
 '
-' Add EXP to EN Macro
+' Removes Score Match round points & EXP from EN Macro
 '
 
     Dim BasePoints As Integer
@@ -222,7 +226,68 @@ Sub SM_EN_Remove()
     
     EXPGain = Range("C21").Value
     
+    ' Remove Round Points from the running total.
     Range("B28").Value = Range("B28").Value - RoundPoints
     Range("B5").Value = Range("B5").Value - EXPGain
+    
+    ' Delete the last result from history.
+    SM_EN_HistoryDel
 
+End Sub
+Sub SM_EN_HistoryAdd()
+'
+' SM_EN_HistoryAdd Macro
+' Adds the current score match information to history on EN.
+'
+
+    Dim RowNumber As Integer
+    RowNumber = Range("E28").Value
+    
+    ' Current Date/Time
+    Range("A" + CStr(RowNumber)).Value = Now()
+    
+    ' Copy/Paste Difficulty
+    Range("B" + CStr(RowNumber)).Value = Range("B22").Value
+    
+    ' Copy/Paste Score Rank
+    Range("C" + CStr(RowNumber)).Value = Range("B23").Value
+        
+    ' Copy/Paste Placement
+    Range("D" + CStr(RowNumber)).Value = Range("B24").Value
+   
+    ' Copy/Paste Round Points
+    Range("E" + CStr(RowNumber)).Value = Range("C25").Value
+    
+    ' Add 1 to Rows
+    Range("E28").Value = RowNumber + 1
+    
+End Sub
+
+Sub SM_EN_HistoryDel()
+'
+' SM_EN_HistoryDel Macro
+' Deletes the last added SM history on EN
+'
+
+    Dim RowNumber As Integer
+    RowNumber = Range("E28").Value - 1
+    
+    ' Current Date/Time
+    Range("A" + CStr(RowNumber)).Value = ""
+    
+    ' Copy/Paste Difficulty
+    Range("B" + CStr(RowNumber)).Value = ""
+    
+    ' Copy/Paste Score Rank
+    Range("C" + CStr(RowNumber)).Value = ""
+        
+    ' Copy/Paste Placement
+    Range("D" + CStr(RowNumber)).Value = ""
+   
+    ' Copy/Paste Round Points
+    Range("E" + CStr(RowNumber)).Value = ""
+    
+    ' Put the reduced row number back in the cell.
+    Range("E28").Value = RowNumber
+    
 End Sub
