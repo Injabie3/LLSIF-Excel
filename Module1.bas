@@ -1,7 +1,10 @@
+Attribute VB_Name = "Module1"
 ' EN and JP Servers - Token Collection Macros
 ' Includes universal LCS (lovecas) macros
 
 Sub AddLCS_EN()
+Attribute AddLCS_EN.VB_Description = "Adds love gems to EN event (on current sheet)"
+Attribute AddLCS_EN.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' Add lovecas to EN Macro
 '
@@ -249,6 +252,8 @@ Sub TC_AddEXP_EN_Token_Easy_4x()
     ActiveCell.FormulaR1C1 = ActiveCell.FormulaR1C1 + (4 * PointsPerSong)
 End Sub
 Sub AddLCS_JP()
+Attribute AddLCS_JP.VB_Description = "Add lovecas to JP event (on current sheet)"
+Attribute AddLCS_JP.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' Add lovecas to EN Macro
 '

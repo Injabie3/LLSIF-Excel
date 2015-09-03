@@ -1,3 +1,4 @@
+Attribute VB_Name = "Module3"
 ' EN Server - Score Match Macros
 
 Sub SM_EN_Step1_Expert()
@@ -181,6 +182,8 @@ Sub SM_EN_Step3_4th()
 
 End Sub
 Sub SM_EN_Add()
+Attribute SM_EN_Add.VB_Description = "Adds the Score Match round points, along with EXP to their respective running totals on EN."
+Attribute SM_EN_Add.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' Adds Score Match round points and EXP to EN Macro
 '
@@ -204,10 +207,12 @@ Sub SM_EN_Add()
     Range("B5").Value = Range("B5").Value + EXPGain
     
     ' Add results to history
-    SM_EN_HistoryAdd
+    SM_EN_HistoryAdd (RoundPoints)
 
 End Sub
 Sub SM_EN_Remove()
+Attribute SM_EN_Remove.VB_Description = "Removes the Score Match round points, along with EXP to their respective running totals on EN."
+Attribute SM_EN_Remove.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' Removes Score Match round points & EXP from EN Macro
 '
@@ -234,7 +239,9 @@ Sub SM_EN_Remove()
     SM_EN_HistoryDel
 
 End Sub
-Sub SM_EN_HistoryAdd()
+Sub SM_EN_HistoryAdd(RoundPoints)
+Attribute SM_EN_HistoryAdd.VB_Description = "Adds the Score Match round information below the currently displayed information on EN."
+Attribute SM_EN_HistoryAdd.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' SM_EN_HistoryAdd Macro
 ' Adds the current score match information to history on EN.
@@ -256,7 +263,7 @@ Sub SM_EN_HistoryAdd()
     Range("D" + CStr(RowNumber)).Value = Range("B24").Value
    
     ' Copy/Paste Round Points
-    Range("E" + CStr(RowNumber)).Value = Range("C25").Value
+    Range("E" + CStr(RowNumber)).Value = RoundPoints
     
     ' Add 1 to Rows
     Range("E28").Value = RowNumber + 1
@@ -264,6 +271,8 @@ Sub SM_EN_HistoryAdd()
 End Sub
 
 Sub SM_EN_HistoryDel()
+Attribute SM_EN_HistoryDel.VB_Description = "Removes the most recent Score Match round history."
+Attribute SM_EN_HistoryDel.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' SM_EN_HistoryDel Macro
 ' Deletes the last added SM history on EN

@@ -1,3 +1,4 @@
+Attribute VB_Name = "Module2"
 ' JP Server - Score Match Macros
 
 Sub SM_JP_Step1_Expert()
@@ -208,7 +209,7 @@ Sub SM_JP_Add()
     Range("H5").Value = Range("H5").Value + EXPGain
     
     ' Add results to history
-    SM_JP_HistoryAdd
+    SM_JP_HistoryAdd (RoundPoints)
 
 End Sub
 Sub SM_JP_Remove()
@@ -238,7 +239,7 @@ Sub SM_JP_Remove()
     SM_JP_HistoryDel
 
 End Sub
-Sub SM_JP_HistoryAdd()
+Sub SM_JP_HistoryAdd(RoundPoints)
 '
 ' SM_JP_HistoryAdd Macro
 ' Adds the current score match information to history.
@@ -260,7 +261,7 @@ Sub SM_JP_HistoryAdd()
     Range("J" + CStr(RowNumber)).Value = Range("H24").Value
    
     ' Copy/Paste Round Points
-    Range("K" + CStr(RowNumber)).Value = Range("I25").Value
+    Range("K" + CStr(RowNumber)).Value = RoundPoints
     
     ' Add 1 to Rows
     Range("K28").Value = RowNumber + 1
